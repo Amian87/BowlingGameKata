@@ -54,14 +54,35 @@ namespace BowlingGameTests
             Assert.AreEqual(18, game.Score());
         }
 
-        //[Test]
-        //public void StrikeRolls()
-        //{
-        //    RollMany(1, 10);
-        //    RollMany(2, 2);
+        [Test]
+        public void StrikeRolls()
+        {
+            RollMany(1, 10);
+            RollMany(2, 2);
 
-        //    Assert.AreEqual(18, game.Score());
-        //}
+            Assert.AreEqual(18, game.Score());
+        }
+
+        [Test]
+        public void SpareWithATen()
+        {
+            RollMany(1, 0);
+            RollMany(1, 10);
+            RollMany(1, 5);
+            RollMany(1, 1);
+
+            Assert.AreEqual(21, game.Score());
+        }
+
+        [Test]
+        public void FinalFrameIsASpare()
+        {
+            RollMany(18, 0);
+            RollMany(2, 5);
+            RollMany(1, 1);
+
+            Assert.AreEqual(11, game.Score());
+        }
 
     }
 }
