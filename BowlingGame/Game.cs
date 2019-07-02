@@ -9,7 +9,17 @@ namespace BowlingGame
 
         public void Rolls(int pinsFall)
         {
-            tally.Add(pinsFall);
+            if (pinsFall == 10)
+            {
+                tally.Add(10);
+                tally.Add(0);
+            }
+            else
+            {
+                tally.Add(pinsFall);
+            }
+
+            
         }
 
         public int Score()
@@ -22,7 +32,7 @@ namespace BowlingGame
                 scoreForCurrentFrame = tally[i] + tally[i + 1];
                 totalScore += scoreForCurrentFrame;
 
-                if(scoreForCurrentFrame == 10)
+                if(scoreForCurrentFrame == 10 )
                 {
                     totalScore += tally[i + 2];
 
