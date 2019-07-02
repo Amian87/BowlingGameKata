@@ -43,15 +43,16 @@ namespace BowlingGameTests
             Assert.AreEqual(20, game.Score());
 
         }
-        
-        //[Test]
-        //public void SpareRolls()
-        //{
-        //    RollMany(2, 5);
-        //    RollMany(1, 3);
 
-        //    Assert.AreEqual(16, game.Score());
-        //}
+        [Test]
+        public void SpareRolls()
+        {
+            RollMany(2, 5);
+            RollMany(1, 3);
+            RollMany(1, 2);
+
+            Assert.AreEqual(18, game.Score());
+        }
 
 
     }
