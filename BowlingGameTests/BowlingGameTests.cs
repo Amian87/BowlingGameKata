@@ -15,11 +15,14 @@ namespace BowlingGameTests
         [Test]
         public void GutterGame()
         {
+            Game game = new Game();
+
             for (int i = 0 ; i < 20; i++)
             {
-                Roll(0);
+                game.Roll(0);
             }
             
+            Assert.AreEqual(0, )
         }
 
 
