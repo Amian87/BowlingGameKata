@@ -8,10 +8,17 @@ namespace BowlingGame
         private List<int> rolls = new List<int>(21);
         private int currentRoll = 0;
 
+        public Game()
+        {
+            for(int i = 0; i<22; i++)
+            {
+                rolls.Add(0);
+            }
+        }
 
         public void Rolls(int pinsFall)
         {
-            rolls.Add(pinsFall);
+            rolls[currentRoll++] = pinsFall;
             
         }
 
@@ -21,6 +28,11 @@ namespace BowlingGame
             int frameIndex = 0;
             for (int frame = 0; frame < 10; frame++)
             {
+                if (isStrike(frameIndex))
+                {
+                    score += 10 + rolls[frameIndex + 1] + rolls[frameIndex + 2];
+                    frameIndex ++;
+                }
                 if(isSpare(frameIndex))
                 {
                     score += 10 + rolls[frameIndex + 2];
@@ -40,6 +52,11 @@ namespace BowlingGame
         private bool isSpare(int frameIndex)
         {
             return rolls[frameIndex] + rolls[frameIndex + 1] == 10;
+        }
+
+        private bool isStrike(int frameIndex)
+        {
+            return rolls[frameIndex] == 10;
         }
 
     }
