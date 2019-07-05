@@ -1,16 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace BowlingGame
 {
     public class Game
     {
-        private int currentRole = 0;
+
+        private int currentRoll = 0;
         private int[] roll = new int[21];
+
 
         public void Roll(int pinsFall)
         {
-            roll[currentRole++] = pinsFall;
-            
+            roll[currentRoll++] = pinsFall;
+
         }
 
         public int Score()
@@ -18,14 +22,14 @@ namespace BowlingGame
             int score = 0;
             int frameIndex = 0;
 
-            for(int frame = 0; frame < 10; frame++)
+            for (int frame = 0; frame < 10; frame++)
             {
                 if (isStrike(frameIndex))
                 {
                     score += 10 + roll[frameIndex + 1] + roll[frameIndex + 2];
                     frameIndex++;
                 }
-                if (isSpare(frameIndex))
+                else if (isSpare(frameIndex))
                 {
                     score += 10 + roll[frameIndex + 2];
                     frameIndex += 2;
