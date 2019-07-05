@@ -4,7 +4,7 @@ using System;
 
 namespace BowlingGameTests
 {
-    public class BowlingGameTest
+    public class BowlingGameTests
     {
         private Game game;
 
@@ -14,26 +14,30 @@ namespace BowlingGameTests
             game = new Game();
         }
 
+       
         public void RollMany(int numberOfRolls, int pinsFall)
         {
             for(int i = 0; i < numberOfRolls; i++)
             {
                 game.Roll(pinsFall);
             }
-
         }
-       
+
         [Test]
         public void GutterGame()
         {
+
             RollMany(20, 0);
+
             Assert.AreEqual(0, game.Score());
         }
 
         [Test]
         public void RollAllOnes()
         {
+
             RollMany(20, 1);
+
             Assert.AreEqual(20, game.Score());
         }
 
@@ -48,13 +52,14 @@ namespace BowlingGameTests
         }
 
         [Test]
-        public void OneStrike()
+        public void RollOneStrike()
         {
             game.Roll(10);
             game.Roll(3);
             game.Roll(4);
             RollMany(16, 0);
             Assert.AreEqual(24, game.Score());
+
         }
 
         [Test]
