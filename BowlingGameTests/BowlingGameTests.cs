@@ -16,7 +16,7 @@ namespace BowlingGameTests
 
         public void RollMany(int numberOfRolls, int pinsFall)
         {
-           for(int i = 0; i < 20; i++)
+           for(int i = 0; i < numberOfRolls; i++)
             {
                 game.Roll(pinsFall);
             }
@@ -29,6 +29,14 @@ namespace BowlingGameTests
             Assert.AreEqual(0, game.Score());
         }
 
+        [Test]
+        public void StrikeRolls()
+        {
+            RollMany(1, 10);
+            RollMany(2, 2);
+
+            Assert.AreEqual(18, game.Score());
+        }
 
         [Test]
         public void RollAllOnes()
@@ -47,8 +55,38 @@ namespace BowlingGameTests
             Assert.AreEqual(16, game.Score());
         }
 
-        
-        
+        [Test]
+        public void SpareInLastFrame()
+        {
+            RollMany(17, 0);
+            game.Roll(5);
+            game.Roll(5);
+            game.Roll(3);
+            Assert.AreEqual(13, game.Score());
+        }
+
+        [Test]
+        public void FinalFrameIsASpare()
+        {
+            RollMany(18, 0);
+            RollMany(2, 5);
+            RollMany(1, 1);
+
+            Assert.AreEqual(11, game.Score());
+        }
+
+        [Test]
+        public void SpareWithATen()
+        {
+            RollMany(1, 0);
+            RollMany(1, 10);
+            RollMany(1, 5);
+            RollMany(1, 1);
+
+            Assert.AreEqual(21, game.Score());
+        }
+
+
 
 
     }
