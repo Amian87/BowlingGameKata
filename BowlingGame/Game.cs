@@ -27,7 +27,7 @@ namespace BowlingGame
                     frameIndex++;
                 }
 
-                if (isSpare(frameIndex))
+                else if (isSpare(frameIndex))
                 {
                     score += 10 + rolls[frameIndex + 2];
                     frameIndex += 2;
