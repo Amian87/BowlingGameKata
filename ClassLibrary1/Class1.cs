@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BowlingGame
+namespace ClassLibrary1
 {
     public class Class1
     {
