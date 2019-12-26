@@ -1,0 +1,52 @@
+﻿using System;
+
+namespace BowlingGame
+{
+    public class Game
+    {
+        private int _currentScore = 0;
+        private readonly int[] _roll = new int[21];
+
+        public void Roll(int pinsFall)
+        {
+            _roll[_currentScore++] += pinsFall;
+        }
+
+        public int Score()
+        {
+            int score = 0;
+            int frameIndex = 0;
+
+            for (int frame = 0; frame < 10; frame++)
+            {
+                if(IsStrike(frameIndex))
+                {
+                    score += 10 + _roll[frameIndex + 1] + _roll[frameIndex + 2];
+                    frameIndex += 1;
+                }
+                else if (IsSpare(frameIndex))
+                {
+                    score += 10 + _roll[frameIndex + 2];
+                    frameIndex += 2;
+                }
+                else
+                {
+                    score += _roll[frameIndex] + _roll[frameIndex + 1];
+                    frameIndex += 2;
+                }
+            }
+
+            return score;
+        }
+
+        private bool IsSpare(int frameIndex)
+        {
+            return _roll[frameIndex] + _roll[frameIndex + 1] == 10;
+        }
+
+        private bool IsStrike(int frameIndex)
+        {
+            return _roll[frameIndex] == 10;
+        }
+    }
+}
