@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BowlingGame
+namespace BowlingGame.Tets
 {
     public class Class1
     {
